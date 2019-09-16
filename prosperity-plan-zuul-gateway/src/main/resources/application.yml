@@ -1,0 +1,24 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: prosperity-plan-zuul-gateway
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:7001/eureka
+  instance:
+    instance-id: prosperity-plan-zuul-gateway
+    prefer-ip-address: true
+
+info:
+  app.name: prosperity-plan
+  company.name: www.ximen.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+zuul:
+  routes:
+    mydept.serviceId: microsprosperity-plan-caipiao
+    mydept.path: /caipiao/**
+    ignored-services: '*' #让原始的微服务名称不可访问
+  prefix: /prosperity  #统一前缀
