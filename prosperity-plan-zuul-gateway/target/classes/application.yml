@@ -17,8 +17,12 @@ info:
   build.artifactId: $project.artifactId$
   build.version: $project.version$
 zuul:
-  routes:
-    mydept.serviceId: microsprosperity-plan-caipiao
-    mydept.path: /caipiao/**
-    ignored-services: '*' #让原始的微服务名称不可访问
   prefix: /prosperity  #统一前缀
+  routes:
+    ignored-services: '*' #让原始的微服务名称不可访问
+    prosperity-plan-user:  #用户
+      path: /user/**       #配置请求URL的请求规则
+      serviceId: prosperity-plan-user #指定Eureka注册中心中的服务id
+    prosperity-plan-fund:  #基金
+      path: /fund/**
+      serviceId: prosperity-plan-fund
